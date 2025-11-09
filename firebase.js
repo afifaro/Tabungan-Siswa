@@ -13,26 +13,26 @@ const firebaseConfig = {
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 } else {
-  firebase.app(); // gunakan app yang sudah ada
+  firebase.app();
 }
 
-// Shortcut biar mudah diakses di file lain
+// Inisialisasi layanan
 const auth = firebase.auth();
 const db = firebase.firestore();
 const storage = firebase.storage();
 
-// 🔐 Fungsi login
+// Fungsi login
 async function loginUser(email, password) {
   try {
     const userCredential = await auth.signInWithEmailAndPassword(email, password);
+    alert("Login berhasil!");
     return userCredential.user;
   } catch (error) {
     alert("Login gagal: " + error.message);
-    throw error;
   }
 }
 
-// 🔐 Fungsi ubah password (untuk admin)
+// Ubah password (admin)
 async function updatePassword(newPassword) {
   const user = auth.currentUser;
   if (user) {
@@ -43,7 +43,7 @@ async function updatePassword(newPassword) {
   }
 }
 
-// 🔐 Fungsi lupa password
+// Lupa password
 async function forgotPassword(email) {
   try {
     await auth.sendPasswordResetEmail(email);
@@ -53,7 +53,7 @@ async function forgotPassword(email) {
   }
 }
 
-// 🔥 Contoh fungsi tambah data siswa
+// Tambah siswa
 async function tambahSiswa(nama, kelas, saldoAwal) {
   try {
     await db.collection("siswa").add({
@@ -67,6 +67,3 @@ async function tambahSiswa(nama, kelas, saldoAwal) {
     alert("Gagal menambah siswa: " + error.message);
   }
 }
-
-// Export agar bisa dipakai di file HTML lain
-export { auth, db, storage, loginUser, updatePassword, forgotPassword, tambahSiswa };
