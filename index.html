@@ -20,7 +20,13 @@
       </div>
     </header>
 
-    <main class="container">
+    <main class="container" id="mainApp">
+      <section id="headerSekolah" class="card center">
+        <img id="logoSekolah" src="assets/logo.png" alt="Logo Sekolah" style="max-height:80px">
+        <h2 id="namaSekolahTitle">SDN NAGREG</h2>
+        <marquee id="quoteMotivasi">Anak hebat selalu menyisihkan uang jajannya untuk ditabung</marquee>
+      </section>
+
       <section class="hero card">
         <div class="marquee-wrap">
           <div id="runningQuote" class="marquee">Anak hebat selalu menyisihkan uang jajannya untuk ditabung</div>
@@ -28,18 +34,13 @@
 
         <div class="actions">
           <button id="studentEnter">Masuk sebagai Siswa</button>
-          <small class="hint"> </small>
+          <small class="hint">Untuk guru & admin: ketuk nama sekolah 5×</small>
         </div>
       </section>
 
       <section class="info card">
         <h2>Tentang Aplikasi</h2>
-        <p>Sistem tabungan siswa sederhana. Versi awal: data disimpan di browser (localStorage). Cocok untuk dipasang di GitHub Pages.</p>
-        <ul>
-          <li>Melihat saldo & riwayat (siswa)</li>
-          <li>Manajemen siswa & guru (guru/admin)</li>
-          <li>Fitur lupa password via WhatsApp</li>
-        </ul>
+        <p>Sistem tabungan siswa berbasis Firebase (Auth + Firestore). Cocok untuk dipakai di sekolah secara multi-user.</p>
       </section>
     </main>
 
@@ -58,7 +59,7 @@
         <button class="tab" data-tab="guru">Guru</button>
       </div>
       <div class="tabcontent" id="adminTab">
-        <label>Username (admin): <input id="adminUser" value="admin"></label>
+        <label>Email admin: <input id="adminUser" value="" type="email"></label>
         <label>Password: <input id="adminPass" type="password"></label>
         <div class="row">
           <button id="adminLoginBtn">Masuk sebagai Admin</button>
@@ -66,7 +67,7 @@
         </div>
       </div>
       <div class="tabcontent hidden" id="guruTab">
-        <label>Username (kode guru): <input id="guruUser" placeholder="kode_guru"></label>
+        <label>Email guru: <input id="guruUser" placeholder="email_guru@example.com" type="email"></label>
         <label>Password: <input id="guruPass" type="password"></label>
         <div class="row">
           <button id="guruLoginBtn">Masuk sebagai Guru</button>
@@ -82,10 +83,9 @@
       <div class="dash-top">
         <img id="dashLogo" src="assets/logo.png" alt="Logo" />
         <h3 id="dashSchoolName">SDN NAGREG</h3>
+        <p id="dashUserInfo"></p>
       </div>
-      <ul id="dashMenu">
-        <!-- menu populated by JS according to role -->
-      </ul>
+      <ul id="dashMenu"></ul>
       <div class="dash-footer">
         <button id="logoutBtn">Logout</button>
       </div>
@@ -95,12 +95,19 @@
       <header class="dash-header">
         <h2 id="dashTitle">Dashboard</h2>
       </header>
-      <div id="dashContent" class="dash-content">
-        <!-- content injected by JS -->
-      </div>
+      <div id="dashContent" class="dash-content"></div>
     </section>
   </div>
 
-  <script src="script.js" defer></script>
+  <!-- Firebase compat libraries (script tag version) -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
+
+  <!-- app firebase init -->
+  <script src="firebase.js"></script>
+  <!-- main app -->
+  <script src="main.js"></script>
 </body>
 </html>

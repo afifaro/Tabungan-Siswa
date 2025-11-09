@@ -40,19 +40,19 @@ body{background:var(--bg);color:var(--text);display:flex;flex-direction:column;m
 .tab{flex:1;padding:0.5rem;border-radius:8px;border:1px solid rgba(0,0,0,0.06);cursor:pointer;background:transparent}
 .tab.active{background:var(--accent);color:#fff;border-color:transparent}
 label{display:block;margin:0.5rem 0;font-size:0.9rem}
-input[type="text"],input[type="password"]{width:100%;padding:0.5rem;border-radius:8px;border:1px solid #ccc;background:transparent}
+input[type="text"],input[type="password"],input[type="email"],select,textarea{width:100%;padding:0.5rem;border-radius:8px;border:1px solid #ccc;background:transparent}
 .row{display:flex;gap:0.5rem;align-items:center;margin-top:0.6rem}
 .link{background:transparent;border:none;color:var(--accent);text-decoration:underline;cursor:pointer}
 
 /* Dashboard layout */
 #dashboard{display:flex;min-height:70vh}
-.dash-sidebar{width:220px;background:var(--card);padding:1rem;border-right:1px solid rgba(0,0,0,0.04)}
+.dash-sidebar{width:240px;background:var(--card);padding:1rem;border-right:1px solid rgba(0,0,0,0.04)}
 .dash-top{text-align:center}
 .dash-top img{width:72px;height:72px;border-radius:8px;display:block;margin:0 auto}
 .dash-top h3{margin:0.5rem 0}
 .dash-sidebar ul{list-style:none;padding:0;margin:1rem 0}
 .dash-sidebar li{margin:0.4rem 0}
-.dash-sidebar button{width:100%;text-align:left;padding:0.5rem;border-radius:8px;border:none;background:transparent;cursor:pointer}
+.dash-sidebar button{width:100%;text-align:left;padding:0.6rem;border-radius:8px;border:none;background:transparent;cursor:pointer}
 .dash-main{flex:1;padding:1rem}
 .dash-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem}
 .card table{width:100%;border-collapse:collapse}
@@ -60,6 +60,7 @@ input[type="text"],input[type="password"]{width:100%;padding:0.5rem;border-radiu
 
 /* Utilities */
 .hidden{display:none}
+.center{text-align:center}
 @media(min-width:900px){
   .container{grid-template-columns:1fr 380px}
 }

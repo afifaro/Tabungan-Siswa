@@ -1,4 +1,4 @@
-// Inisialisasi Firebase
+// firebase.js — inisialisasi Firebase (compat) with provided config
 const firebaseConfig = {
   apiKey: "AIzaSyD6h40vY7anmvLPHwnL-zQFGYmHvXXFvhA",
   authDomain: "tabungasiswa.firebaseapp.com",
@@ -9,61 +9,15 @@ const firebaseConfig = {
   measurementId: "G-E0FD1K3QB3"
 };
 
-// Pastikan Firebase tidak diinisialisasi dua kali
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 } else {
   firebase.app();
 }
 
-// Inisialisasi layanan
 const auth = firebase.auth();
 const db = firebase.firestore();
 const storage = firebase.storage();
 
-// Fungsi login
-async function loginUser(email, password) {
-  try {
-    const userCredential = await auth.signInWithEmailAndPassword(email, password);
-    alert("Login berhasil!");
-    return userCredential.user;
-  } catch (error) {
-    alert("Login gagal: " + error.message);
-  }
-}
-
-// Ubah password (admin)
-async function updatePassword(newPassword) {
-  const user = auth.currentUser;
-  if (user) {
-    await user.updatePassword(newPassword);
-    alert("Password berhasil diubah.");
-  } else {
-    alert("Silakan login terlebih dahulu.");
-  }
-}
-
-// Lupa password
-async function forgotPassword(email) {
-  try {
-    await auth.sendPasswordResetEmail(email);
-    alert("Email reset password telah dikirim ke: " + email);
-  } catch (error) {
-    alert("Gagal mengirim email reset: " + error.message);
-  }
-}
-
-// Tambah siswa
-async function tambahSiswa(nama, kelas, saldoAwal) {
-  try {
-    await db.collection("siswa").add({
-      nama: nama,
-      kelas: kelas,
-      saldo: saldoAwal,
-      tanggal: new Date()
-    });
-    alert("Siswa berhasil ditambahkan!");
-  } catch (error) {
-    alert("Gagal menambah siswa: " + error.message);
-  }
-}
+// expose globally
+window.FB = { auth, db, storage };
