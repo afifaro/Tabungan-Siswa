@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tabungan Siswa — SDN NAGREG</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#007bff" id="metaThemeColor"/>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div class="branding">
+        <img id="schoolLogo" src="assets/logo.png" alt="Logo Sekolah" />
+        <h1 id="schoolName" tabindex="0">SDN NAGREG</h1>
+      </div>
+      <div class="controls">
+        <button id="themeToggle" title="Ganti tema">🌙/☀️</button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero card">
+        <div class="marquee-wrap">
+          <div id="runningQuote" class="marquee">Anak hebat selalu menyisihkan uang jajannya untuk ditabung</div>
+        </div>
+
+        <div class="actions">
+          <button id="studentEnter">Masuk sebagai Siswa</button>
+          <small class="hint"> </small>
+        </div>
+      </section>
+
+      <section class="info card">
+        <h2>Tentang Aplikasi</h2>
+        <p>Sistem tabungan siswa sederhana. Versi awal: data disimpan di browser (localStorage). Cocok untuk dipasang di GitHub Pages.</p>
+        <ul>
+          <li>Melihat saldo & riwayat (siswa)</li>
+          <li>Manajemen siswa & guru (guru/admin)</li>
+          <li>Fitur lupa password via WhatsApp</li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>© 2025 Tabungan Siswa — SDN NAGREG</p>
+    </footer>
+  </div>
+
+  <!-- Modal: Hidden login -->
+  <div id="modalOverlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+    <div class="modal">
+      <button class="closeBtn" id="closeModal">&times;</button>
+      <h3>Login Rahasia</h3>
+      <div class="tabs">
+        <button class="tab active" data-tab="admin">Admin</button>
+        <button class="tab" data-tab="guru">Guru</button>
+      </div>
+      <div class="tabcontent" id="adminTab">
+        <label>Username (admin): <input id="adminUser" value="admin"></label>
+        <label>Password: <input id="adminPass" type="password"></label>
+        <div class="row">
+          <button id="adminLoginBtn">Masuk sebagai Admin</button>
+          <button id="adminForgotBtn" class="link">Lupa Password</button>
+        </div>
+      </div>
+      <div class="tabcontent hidden" id="guruTab">
+        <label>Username (kode guru): <input id="guruUser" placeholder="kode_guru"></label>
+        <label>Password: <input id="guruPass" type="password"></label>
+        <div class="row">
+          <button id="guruLoginBtn">Masuk sebagai Guru</button>
+          <button id="guruForgotBtn" class="link">Lupa Password</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dashboard (single page) -->
+  <div id="dashboard" class="hidden">
+    <nav class="dash-sidebar">
+      <div class="dash-top">
+        <img id="dashLogo" src="assets/logo.png" alt="Logo" />
+        <h3 id="dashSchoolName">SDN NAGREG</h3>
+      </div>
+      <ul id="dashMenu">
+        <!-- menu populated by JS according to role -->
+      </ul>
+      <div class="dash-footer">
+        <button id="logoutBtn">Logout</button>
+      </div>
+    </nav>
+
+    <section class="dash-main">
+      <header class="dash-header">
+        <h2 id="dashTitle">Dashboard</h2>
+      </header>
+      <div id="dashContent" class="dash-content">
+        <!-- content injected by JS -->
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
